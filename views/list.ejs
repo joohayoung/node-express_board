@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+</head>
+<body>
+<h1> <%= title %> </h1>
+<a href="/board/write">글쓰기</a>
+<table border="1">
+    <tr>
+        <td>번호</td>
+        <td>작성자</td>
+        <td>제목</td>
+        <td>조회수</td>
+        <td>수정일</td>
+        <td>등록일</td>
+    </tr>
+    <!--랜더링된 rows의 길이를 가져옴, for문으로 데이터에 행만큼 리스트 출력-->
+    <%
+    for(var i=0; i<rows.length; i++) {
+        var data = rows[i]; <!--데이터를 보기 쉽게 data변수에 담는다-->
+    %>
+
+    <tr>
+        <td><%=data.idx%></td> <!--data.변수로 해당 SQL문에 칼럼이름으로 가져옴-->
+        <td><%=data.name%></td>
+        <td><a href="/board/read/<%=data.idx%>"><%=data.title%></a></td>
+        <td><%=data.hit%></td>
+        <td><%=data.modidate%></td>
+        <td><%=data.regdate%></td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>
